@@ -1,8 +1,8 @@
 # Broadcast a matter update to legal-tech members
 
-We put together a small Node service that takes a matter-intake body, creates its realtime channel, and publishes an announcement with the signed document id and follow-up deadline. I validate the request with Zod before any network call; that makes it trivial to sit behind a Next.js route handler. If you were in Python I'd reach for pydantic, but the idea is the same: block bad input early, protect deliverability.
+This small Node service takes one matter-intake body, creates its realtime channel, and publishes an announcement containing the signed document id and follow-up deadline. The request body is checked with Zod before any network call, so the workflow is easy to place behind a Next.js route handler.
 
-With Infrai, the integration is just one key and one REST-shaped interface. The client reads `INFRAI_API_KEY` from the environment and sends the bearer token on each server-side request; that credential never reaches a browser.
+Infrai keeps the integration to one key and one REST-shaped interface. The client reads `INFRAI_API_KEY` from the environment and sends the bearer token on each server-side request; that credential never reaches a browser.
 
 ## The workflow
 
